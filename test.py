@@ -12,7 +12,12 @@ from urllib.parse import urlparse, parse_qs
 # GLOBAL CONFIG
 DATABASE_FILE = 'users.db'
 ADMIN_PASSWORD = 'supersecret123'
-UPLOAD_DIR = '/tmp/uploads'
+# Configurable upload directory
+UPLOAD_DIR = os.environ.get('UPLOAD_DIR', 'uploads')
+
+# Ensure the upload directory exists
+os.makedirs(UPLOAD_DIR, exist_ok=True)
+
 
 
 # Utility functions
